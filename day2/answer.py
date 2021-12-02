@@ -24,13 +24,13 @@ def result2():
     print(h * d)
 
 def result2_golf():
-    h, d, a = 0, 0, 0
+    h=d=a=0
     for b in open('d'):
-        x = int(b[-2])
-        if b[0] == "d": a += x
-        if b[0] == "u": a -= x
-        if b[0] == "f": h += x;d += x * a
-    print(h * d)
+        x=int(b[-2])
+        if b[0]=="d":a+=x
+        if b[0]=="u":a-=x
+        if b[0]=="f":h+=x;d+=x*a
+    print(h*d)
 
 
 if __name__ == "__main__":
