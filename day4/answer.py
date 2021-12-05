@@ -44,14 +44,14 @@ def result2():
     print(len(bingo_cards))
     for nr in drawn_numbers:
         to_delete = set()
-        for i, cart in enumerate(bingo_cards):
-            for row in cart:
+        for i, card in enumerate(bingo_cards):
+            for row in card:
                 copy = row.copy()
                 [row.remove(x) for x in copy if x == nr]
                 if len(row) == 0:
                     if len(bingo_cards) == 1:
                         sum = 0
-                        for rows in cart[:5]:
+                        for rows in card[:5]:
                             for nrs in rows:
                                 sum += int(nrs)
                         return int(nr) * sum
