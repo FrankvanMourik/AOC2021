@@ -36,13 +36,14 @@ def result2():
     bingo_cards = []
     begin = 2
     for i in range(len(data) // 6):
-        cart = []
-        [cart.append(data[i * 6 + begin + x].split()) for x in range(5)]
-        cart.extend(list(map(list, zip(*cart))))
-        print(cart)
-        bingo_cards.append(cart)
+        card = []
+        [card.append(data[i * 6 + begin + x].split()) for x in range(5)]
+        card.extend(list(map(list, zip(*card))))
+        print(card)
+        bingo_cards.append(card)
     print(len(bingo_cards))
     for nr in drawn_numbers:
+        to_delete = set()
         for i, cart in enumerate(bingo_cards):
             for row in cart:
                 copy = row.copy()
@@ -54,8 +55,8 @@ def result2():
                             for nrs in rows:
                                 sum += int(nrs)
                         return int(nr) * sum
-                    del bingo_cards[i]
-                    break
+                    to_delete |= {i}
+        bingo_cards = [carD for i, carD in enumerate(bingo_cards) if i not in to_delete]
     return 0
 
 
