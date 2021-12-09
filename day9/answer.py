@@ -43,7 +43,14 @@ def isLocalMinimum(i, j, matrix):
 
 
 def result2():
-    return ""
+    a = [[*map(int, b)] for *b, c in open('input.txt')];
+    b = enumerate
+    c = lambda x, y: [(o, p) for o, p in zip([x, x + 1, x, x - 1], [y + 1, y, y - 1, y]) if
+                      0 <= o < len(a) and 0 <= p < len(a[o])]
+    d = lambda x, y: {(x, y)} | {s for o, p in c(x, y) if 9 > a[o][p] > a[x][y] for s in d(o, p)}
+    q = 1
+    [q := -q * w for w in sorted(len(d(f, h)) for f, g in b(a) for h, i in b(g))[-3:]]
+    print(-q)
 
 
 def result2_golf():
@@ -51,4 +58,4 @@ def result2_golf():
 
 
 if __name__ == "__main__":
-    print(result1())
+    print(result2())
