@@ -62,6 +62,8 @@ def result2(fileName):
     coordinates = [[int(x.split(',')[0]), int(x.split(',')[1])] for x in coordinates]
     max_number_x = max([x[0] for x in coordinates])
     max_number_y = max([x[1] for x in coordinates])
+    max_number_y += 1
+    print(max_number_x, max_number_y)
     matrix = []
     for i in range(max_number_y + 1):
         matrix.append([0] * (max_number_x + 1))
@@ -74,9 +76,12 @@ def result2(fileName):
         number = int(instruction[2:])
         print(orientation, number)
         if orientation == 'x':
+            print((len(matrix[0])-1)/number)
             matrix = x_fold(matrix, number)
         else:
+            print((len(matrix) - 1) / number)
             matrix = y_fold(matrix, number)
+        # pretty(matrix)
     pretty(matrix)
     return 0
 
@@ -86,7 +91,7 @@ def pretty(matrix):
         stri = ""
         for chr in row:
             if chr == 0:
-                stri += " "
+                stri += "-"
             else:
                 stri += "#"
         print(stri)
@@ -101,6 +106,6 @@ def result2_golf():
 
 
 if __name__ == "__main__":
-    print(test())
+    # print(test())
     # print(result1("input.txt"))
     print(result2("input.txt"))
