@@ -66,9 +66,9 @@ def result2(fileName):
         matrix[coordinate[1]][coordinate[0]] = 1
 
     for instruction in instructions:
-        first_instruction = instruction[11:]
-        orientation = first_instruction[0]
-        number = int(first_instruction[2:])
+        instruction = instruction[11:]
+        orientation = instruction[0]
+        number = int(instruction[2:])
         print(orientation, number)
         if orientation == 'x':
             matrix = x_fold(matrix, number)
@@ -78,10 +78,10 @@ def result2(fileName):
     return 0
 
 def pretty(matrix):
-    for x in matrix:
+    for row in matrix:
         stri = ""
-        for y in x:
-            if y == 0:
+        for chr in row:
+            if chr == 0:
                 stri += " "
             else:
                 stri += "#"
